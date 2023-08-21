@@ -1,8 +1,6 @@
 from setuptools import find_packages,setup
-from typing import List
-
 HYPHON_E_DOT="-e ."
-def get_requirements(file_path:str)->List[str]:
+def get_requirements(file_path):
     """
     this function will return the list of elements
 
@@ -14,7 +12,7 @@ def get_requirements(file_path:str)->List[str]:
 
         if HYPHON_E_DOT in requirements:
             requirements.remove(HYPHON_E_DOT)
-            
+
     return requirements
 
 
