@@ -1,12 +1,15 @@
 import os
 import sys
-from src.exception import CustomException
-from src.logger import logging 
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from dataclasses import dataclass
+
+from src.exception import CustomException
+from src.logger import logging 
+from src.components.data_transformation import DatatransformationConfig
+from src.components.data_transformation import DataTransformation
 
 @dataclass
 class DataInjestionConfig:
@@ -51,7 +54,13 @@ class DataInjestion:
         
 if __name__=="__main__":
     obj=DataInjestion()
-    obj.initiate_data_injestion()
+    train_path,test_path=obj.initiate_data_injestion() 
+    #calling method of DataInjestion Class which return the train/test data path
+
+    data_transformation=DataTransformation()
+    data_transformation.initiate_data_transformation(train_path,test_path) 
+    #passing that path to transformation method of data_injestion file.. to perform transformation on train data and test data...
+    # which return train and test data in array format
     
     
 
