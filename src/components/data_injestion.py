@@ -1,15 +1,18 @@
-import os
-import sys
 
 import pandas as pd
+import numpy as np
+import os
+import sys
+from dataclasses import dataclass
+
 from sklearn.model_selection import train_test_split
 
-from dataclasses import dataclass
 
 from src.exception import CustomException
 from src.logger import logging 
 from src.components.data_transformation import DatatransformationConfig
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainerConfig,ModelTrainer
 
 @dataclass
 class DataInjestionConfig:
@@ -58,9 +61,12 @@ if __name__=="__main__":
     #calling method of DataInjestion Class which return the train/test data path
 
     data_transformation=DataTransformation()
-    data_transformation.initiate_data_transformation(train_path,test_path) 
+    train_arr,test_arr,_= data_transformation.initiate_data_transformation(train_path,test_path) 
     #passing that path to transformation method of data_injestion file.. to perform transformation on train data and test data...
     # which return train and test data in array format
+
+    ModelTrainer=ModelTrainer()
+    print(ModelTrainer.initiate_model_trainer(train_arr,test_arr)) # this will print r2_score value
     
     
 
