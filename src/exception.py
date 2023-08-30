@@ -1,7 +1,7 @@
 import sys
 from src.logger import logging
 
-def error_message_detail(error,error_detail:sys): # defining custom msg..
+def error_message_detail(error,error_detail:sys): # defining custom msg..error_detail will be present in sys..
     _,_,exc_tb=error_detail.exc_info() # getting last parameter of errror which is exc_tb
     file_name = exc_tb.tb_frame.f_code.co_filename # fetching filename from exc_tb
     error_message =" Error occured in python script name [{0}] line number [{1}] error message [{2}]".format(

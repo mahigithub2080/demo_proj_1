@@ -56,6 +56,8 @@ class DataTransformation:
                 ]
             )
             # creating pipeline for catagorical feature
+
+            
             logging.info(f"num_pipeline created... and are numerical_fetures : {numerical_feature}")
             logging.info(f"cat_pipeline created... and are catagorical_feature : {catagorical_feature}")
 

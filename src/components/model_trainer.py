@@ -25,6 +25,7 @@ class ModelTrainer:
         self.model_trainer_config=ModelTrainerConfig()
 
     def initiate_model_trainer(self,train_array,test_array):
+        # train_array,test_array from data_transformation file but it will getting called from data_injestion file
         try:
             logging.info("Split training and test input data")
             X_train,y_train,X_test,y_test=(
@@ -100,9 +101,9 @@ class ModelTrainer:
                 obj=best_model
             ) # save file to .pkl format..
 
-            predicted=best_model.predict(X_test)
+            y_predicted=best_model.predict(X_test)
             # prediction 
-            r2_square = r2_score(y_test, predicted)
+            r2_square = r2_score(y_test, y_predicted)
             return r2_square
             # getting r2_score and return
             
