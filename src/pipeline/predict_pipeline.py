@@ -17,8 +17,8 @@ class PredictPipeline:
             model=load_object(file_path=model_path) # it will call the function from utils.py file
             preprocessor=load_object(file_path=processor_path)
             data_scaled=preprocessor.transform(features)
-            preds=model.predict(data_scaled) # this predict is built-in method of model...
-            return preds
+            y_preds=model.predict(data_scaled) # this predict is built-in method of model...
+            return y_preds
         
         except Exception as e:
             raise CustomException
